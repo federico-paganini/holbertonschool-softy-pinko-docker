@@ -1,0 +1,27 @@
+services:
+  frontend:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    image: softy-pinko-front-end
+    expose:
+      - "9000"
+
+  backend:
+    build:
+      context: ./back-end
+      dockerfile: Dockerfile
+    image: softy-pinko-back-end
+    expose:
+      - "5252"
+
+  proxy:
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    image: softy-pinko-proxy
+    ports:
+      - 80:80
+    depends_on:
+      - front-end
+      - back-end
