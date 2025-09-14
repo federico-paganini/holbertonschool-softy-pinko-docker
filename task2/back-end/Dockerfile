@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:latest
 
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -13,8 +13,8 @@ COPY requirements.txt .
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-COPY app.py .
+COPY api.py .
 
 EXPOSE 5252
 
-CMD ["python3", "app.py"]
+CMD ["python3", "api.py"]
